@@ -22,7 +22,7 @@ int main( int argc, char **argv ) {
   makeChildren( head->child[3]->child[3]->child[2]);
   makeChildren( head->child[2]->child[1]);
   makeChildren( head->child[2]->child[1]->child[0]);
-
+  makeChildren( head->child[2]->child[1]->child[0]->child[3]);
   // print the tree for Gnuplot
 	writeTree( head );
 

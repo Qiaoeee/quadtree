@@ -57,3 +57,29 @@ void growTree( Node *parent ) {
       growTree( parent->child[3]);
   }
 }
+
+void destroyTree( Node *parent ) {
+  if( parent->child[0] == NULL )
+  {
+      free(parent);
+      parent = NULL;
+  }
+  else
+  {
+      destroyTree(parent->child[0]);
+      destroyTree(parent->child[1]);
+      destroyTree(parent->child[2]);
+      destroyTree(parent->child[3]);
+  }
+
+}
+
+void removeTree( Node *parent ){
+  int i = 0;
+  for(i = 0; i < 4; i++)
+  {
+      free(parent->child[i]);
+      parent = NULL;
+  }
+
+}

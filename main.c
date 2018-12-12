@@ -15,6 +15,7 @@ int main( int argc, char **argv ) {
 
   // make a tree
   makeChildren( head );
+  /*
   makeChildren( head->child[1] );
   makeChildren( head->child[3] );
   makeChildren( head->child[2] );
@@ -24,9 +25,12 @@ int main( int argc, char **argv ) {
   makeChildren( head->child[2]->child[1]->child[0]);
   makeChildren( head->child[2]->child[1]->child[0]->child[3]);
 
+  */
   // grow tree
   growTree( head );
   growTree( head );
+  removeTree(head->child[2]->child[1]);
+  //destroyTree( head );
   // print the tree for Gnuplot
   writeTree( head );
 

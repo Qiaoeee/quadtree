@@ -23,8 +23,12 @@ int main( int argc, char **argv ) {
   makeChildren( head->child[2]->child[1]);
   makeChildren( head->child[2]->child[1]->child[0]);
   makeChildren( head->child[2]->child[1]->child[0]->child[3]);
+
+  // grow tree
+  growTree( head );
+  growTree( head );
   // print the tree for Gnuplot
-	writeTree( head );
+  writeTree( head );
 
   return 0;
 }

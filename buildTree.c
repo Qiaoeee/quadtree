@@ -45,3 +45,15 @@ void makeChildren( Node *parent ) {
 
   return;
 }
+
+void growTree( Node *parent ) {
+  if( parent->child[0] == NULL )
+    makeChildren( parent );
+  else
+  {
+      growTree( parent->child[0]);
+      growTree( parent->child[1]);
+      growTree( parent->child[2]);
+      growTree( parent->child[3]);
+  }
+}

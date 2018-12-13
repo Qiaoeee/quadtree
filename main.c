@@ -1,4 +1,3 @@
-#include "stdio.h"
 #include "stdlib.h"
 #include "buildTree.h"
 #include "writeTree.h"
@@ -28,8 +27,8 @@ int main( int argc, char **argv ) {
   */
   // grow tree
   growTree( head );
-  growTree( head );
-  removeTree(head->child[2]->child[1]);
+  //makeChildren( head->child[3]->child[3]);
+  removeChildren( head->child[3]);
   //destroyTree( head );
   // print the tree for Gnuplot
   writeTree( head );

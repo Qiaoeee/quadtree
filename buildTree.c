@@ -74,12 +74,13 @@ void destroyTree( Node *parent ) {
 
 }
 
-void removeTree( Node *parent ){
+void removeChildren( Node *parent ){
   int i = 0;
   for(i = 0; i < 4; i++)
   {
       free(parent->child[i]);
-      parent = NULL;
+      parent->child[i] = NULL;
   }
-
+  parent = NULL;
 }
+

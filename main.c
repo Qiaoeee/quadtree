@@ -6,8 +6,9 @@
 #include "treeStructure.h"
 #include "nodeValue.h"
 // main
-
-
+extern int add;
+extern int rem;
+extern int maxLevel;
 int main( int argc, char **argv ) {
 
   Node *head;
@@ -35,8 +36,22 @@ int main( int argc, char **argv ) {
   //makeChildren( head->child[3]->child[3]);
   //removeChildren( head->child[3]->child[0]);
   //destroyTree( head );
+  rem = 2;
+  add = 2;
+  adapt( head );
+  
+  /*
   setFlag(head, time);
   manageTree(head);
+  setFlag(head, time);
+  manageTree(head);
+  setFlag(head, time);
+  manageTree(head);
+  setFlag(head, time);
+  manageTree(head);
+  setFlag(head, time);
+  manageTree(head);
+  */
   // print the tree for Gnuplot
   writeTree( head );
 

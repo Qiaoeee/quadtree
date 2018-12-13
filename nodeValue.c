@@ -4,7 +4,9 @@
 #include "buildTree.h"
 #include "treeStructure.h"
 
-
+int add = 0;
+int rem = 0;
+int maxLevel = 6;
 // Data function
 
 double value( double x, double y, double time ) {
@@ -25,15 +27,16 @@ double nodeValue( Node *node, double time ) {
   return( value( x+0.5*h, y+0.5*h, time ) );
 }
 
+
 int setFlag(Node *parent, double time) {
   if( parent->child[0] == NULL )
   {
-  	if(value(parent->xy[0], parent->xy[1], time) < -0.5) 
+  	if(nodeValue(parent, time) < -0.5) 
   	{
   	  parent->flat = -1;
   	  return -1;
 	}
-	else if(value(parent->xy[0], parent->xy[1], time) > 0.5)
+	else if(nodeValue(parent, time) > 0.5)
 	{
 	  parent->flat = 1;
 	  return 1;
@@ -56,9 +59,10 @@ int setFlag(Node *parent, double time) {
 
 void manageTree(Node *parent)
 {
-  if( parent->flat == 1)
+  if( parent->flat == 1 &&  ((parent->level) < maxLevel))
   {
   	makeChildren(parent);
+  	add += 4;
   }
   else if(parent->child[0] != NULL)
   {
@@ -69,7 +73,10 @@ void manageTree(Node *parent)
   	    counter += 1;
     }
     if(counter == 4)
+    {
       removeChildren(parent);
+      rem += 4;
+	}  
     // its children's value are not all -1
     else
       {
@@ -78,7 +85,21 @@ void manageTree(Node *parent)
       	  manageTree(parent->child[i]);
 		}
 	  }
-  }
-  // parent->child[0] == NULL && parent->flat == -1
+  }  
+}
 
+
+void adapt( Node *head )
+{
+  double time = 0.0;
+  int i;
+  while(add != 0 || rem != 0)
+  {
+  	add = 0;
+  	rem = 0;
+    setFlag(head, time);
+    manageTree(head);
+    printf("There are %d nodes added\n", add);
+    printf("There are %d nodes removed\n", rem);
+  }
 }

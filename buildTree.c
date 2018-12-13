@@ -84,3 +84,7 @@ void removeChildren( Node *parent ){
   parent = NULL;
 }
 
+void addChildren( Node *parent )
+{
+  
+}

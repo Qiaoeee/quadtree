@@ -3,6 +3,9 @@
 #include "math.h"
 #include "treeStructure.h"
 
+void writeNode( FILE *fp, Node *node );
+void printOut( FILE *fp, Node *node );
+
 void writeTree( Node *head ) {
 
   FILE *fp = fopen("quad.out","w");
